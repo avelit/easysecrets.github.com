@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="ap-local-base-url" content="{{localBaseUrl}}">
+  <title>DECODE search results</title>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.6.16/css/aui.css" media="all">
+  <link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.6.16/css/aui-experimental.css" media="all">
+  <!--[if IE 9]><link rel="stylesheet" href="//aui-cdn.atlassian.com/aui-adg/5.6.16/css/aui-ie9.css" media="all"><![endif]-->
+  <link rel="stylesheet" href="css/styles.css" media="all">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="//aui-cdn.atlassian.com/aui-adg/5.6.16/js/aui.js"></script>
+  <!--script src="//aui-cdn.atlassian.com/aui-adg/5.6.16/js/aui-datepicker.js"></script-->
+  <script src="//aui-cdn.atlassian.com/aui-adg/5.6.16/js/aui-experimental.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.22/angular-route.min.js"></script>
+  <script src="js/app-min.js"></script>
+</head>
+<body class="aui-page-hybrid">
+  <section id="content" role="main" ng-view>
+  </section>
+
+  <script>
+    //https://developer.atlassian.com/static/connect/docs/1.1.33/guides/connect-cookbook.html#all.js
+    (function() {
+      var getUrlParam = function (param) {
+        var matches = (new RegExp(param + '=([^&]+)')).exec(window.location.search);
+        var codedParam = matches ? matches[1] : '';
+        return decodeURIComponent(codedParam);
+      };
+
+      var baseUrl = getUrlParam('xdm_e') + getUrlParam('cp');
+      var dashboard = getUrlParam('dashboard');
+      var dashboardItem = getUrlParam('dashboardItem');
+      var isGadget = !!dashboard;
+      if (isGadget) {
+        $('body').css('background', '#fff');
+        $('body').addClass('is-gadget');
+      } else {
+        $('body').addClass('is-not-gadget');
+      }
+      $.getScript(baseUrl + '/atlassian-connect/all.js', function() {
+  	    $('#content').html("<context items='{\"isGadget\":" + isGadget +
+           ", \"dashboardId\":\"" + dashboard + "\"" +
+           ", \"dashboardItemId\":\"" + dashboardItem + "\"" +
+           ", \"hostBaseUrl\": \"" + baseUrl + "\"" +
+           ", \"license\": \"none\"}' />");
+        // bootstrap angular app now
+        // http://docs.angularjs.org/guide/bootstrap#manual-initialization
+        // TODO: load from backend
+        // add filter at runtime?
+        var filters = [{
+          name: 'usd',
+          code: "return function(input) { return input + '$' }"
+        }];
+        window.availableFilters = ['currency', 'numnber', 'date', 'prettyHours', 'prettyDuration', 'timeToResolve', 'timeLeft'];
+        angular.forEach(filters, function(filter) {
+          app.filter(filter.name, new Function(filter.code));
+          // TODO: availableFilters.push(filter.name);
+        });
+        angular.bootstrap(document, ['searchApp']);
+      });
+    })();
+  </script>
+
+</body>
+</html>

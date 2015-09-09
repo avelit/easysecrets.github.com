@@ -1,0 +1,80 @@
+<form class="aui top-label" name="columnForm">
+    <div class="aui-group">
+        <div class="aui-item">
+            <div class="field-group">
+                <label for="columnName">Name <span class="aui-icon icon-required">(required)</span></label>
+                <input class="text medium-field" type="text"
+                       name="columnName"
+                       placeholder="E.g. Cost"
+                       ng-model="column.name"
+                       ng-change="columnNameChanged()"
+                       required
+                       autofocus/>
+                <div class="error" ng-show="columnForm.columnName.$error.required && columnForm.$dirty">Required</div>
+                <div class="description">Column name to display.</div>
+            </div>
+            <div class="field-group">
+                <label for="columnTemplate">Template <span class="aui-icon icon-required">(required)</span></label>
+                <textarea class="textarea long-field" rows="3"
+                          placeholder="E.g. <span ng-bind=&quote;{{column.expression}}&quote;/>"
+                          ng-model="column.template"
+                          codemirror codemirror-opts="({mode: 'text/html', extraKeys: {'Ctrl-Space': 'autocomplete'}})"
+                          name="columnTemplate" required></textarea>
+                <input type="hidden" name="noTemplateError" ng-model="columnOptions.noTemplateError" required/>
+                <div class="error" ng-show="columnOptions.templateError" ng-click="showTemplateError = !showTemplateError">Invalid ...
+                    <span class="field-help" ng-show="showTemplateError">{{columnOptions.templateError}}</span></div>
+                <div class="error" ng-show="columnForm.columnTemplate.$error.required">Required</div>
+                <div class="description">Column template. Press <code>Ctrl+Space</code> for code completion. <span class="aui-icon icon-inline-help" ng-click="showTemplateHelp = !showTemplateHelp"><span>Help</span></span></div>
+                <span class="field-help" ng-show="showTemplateHelp">See <a href="http://www.lambdaplugin.com/wiki/Examples.html">documentation</a> for more details.</span>
+            </div>
+            <div class="field-group">
+                <label for="columnExpression">Expression <span class="aui-icon icon-required">(required)</span></label>
+                <textarea class="textarea long-field" rows="3"
+                          placeholder="E.g. (issue.fields.timespent * (issue.fields.rate || 25) / 3600) | usd"
+                          ng-model="column.expression"
+                          codemirror codemirror-opts="({mode: {name: 'javascript', globalVars: {name: 'issue'}}, extraKeys: {'Ctrl-Space': 'autocomplete'}, hintOptions: {useGlobalScope: false, additionalContext: {issue: preview.issue}}})"
+                          name="columnExpression" required></textarea>
+                <input type="hidden" name="noExpressionError" ng-model="columnOptions.noExpressionError" required/>
+                <div class="error" ng-show="columnOptions.expressionError" ng-click="showExpressionError = !showExpressionError">Invalid ...
+                    <span class="field-help" ng-show="showExpressionError">{{columnOptions.expressionError}}</span></div>
+                <div class="description">Column expression. Press <code>Ctrl+Space</code> for code completion. <span class="aui-icon icon-inline-help" ng-click="showExpressionHelp = !showExpressionHelp"><span>Help</span></span></div>
+                <span class="field-help" ng-show="showExpressionHelp">See <a href="http://www.lambdaplugin.com/wiki/Examples.html">documentation</a> for more details.</span>
+            </div>
+            <div class="field-group">
+                <label for="columnPreview">Preview</label>
+                <issue-column-2 issue="preview.issue" column="column" is-valid="!columnOptions.expressionError"/>
+            </div>
+        </div>
+        <div class="aui-item"> <!-- PREVIEW -->
+            <div class="field-group">
+                <label for="select2-issue">Sample Issue</label>
+                <select name="select2-issue" class="select"
+                        title="Sample issue"
+                        ng-model="issueOptions.selected"
+                        ng-options="issue.id as (issue.key + ' ' + issue.fields.summary) for issue in issueOptions.issues"
+                        ng-change="issueSelected()"
+                        aui-select2>
+                </select>
+                <div class="description">Select issue to see column in action.</div>
+            </div>
+            <div class="field-group">
+                <label for="issueJson">JSON</label>
+                    <pre class="textarea long-field json" highlight
+                         name="issueJson" ng-bind="preview.issueJson">/pre>
+                    <div class="description">Issue object.&nbsp;<span class="aui-icon icon-inline-help" ng-click="showJsonHelp = !showJsonHelp"><span>Help</span></span></div>
+                    <span class="field-help" ng-show="showJsonHelp">See <a href="http://www.lambdaplugin.com/wiki/Examples.html">documentation</a> for more details.</span>
+            </div>
+            <!--div class="checkbox">
+                <input class="checkbox" type="checkbox"
+                       name="debug"
+                       ng-model="logger.enabled"></input>
+                <label for="debug">Enable debug logging in javascript console</label>
+            </div-->
+        </div>
+    </div>
+    <div>
+        <button class="aui-button submit" ng-click="saveColumn(columnForm)" ng-disabled="!columnForm.$dirty || columnForm.$invalid">Save</button>
+        <button class="aui-button aui-button-subtle" ng-click="saveAsNewColumn(columnForm)" ng-disabled="!showSaveAsNewButton">Save As New</button>
+        <button class="aui-button aui-button-subtle dangerous" ng-click="removeColumn(true)" ng-disabled="column._global || !column.id">Delete</button>
+    </div>
+</form>

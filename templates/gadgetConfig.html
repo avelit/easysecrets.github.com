@@ -1,0 +1,27 @@
+<div id="config" ng-controller="GadgetController">
+    <form class="aui">
+        <div class="field-group">
+            <label>View</label>
+            <select class="select"
+                    title="Select a view"
+                    ng-model="viewOptions.selected"
+                    ng-options="view.id as view.name for view in viewOptions.views"
+                    aui-select2>
+            </select>
+            <div class="description">You can configure views <a ng-href="{{hostBaseUrl}}/plugins/servlet/ac/lambda-plugin/search" target="_parent">here</a>.</div>
+        </div>
+        <div class="field-group">
+            <select id="select2-filter" class="select" title="Saved filter"
+                    ng-model="filterOptions.selected"
+                    ng-options="filter.id as filter.name for filter in filterOptions.filters"
+                    aui-select2>
+            </select>
+        </div>
+        <div class="buttons-container">
+            <div class="buttons">
+                <button class="aui-button aui-button-primary" ng-click="saveGadgetConfig()">Save</button>
+                <button class="aui-button aui-button-link" ng-click="cancelGadgetConfigSaving()">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

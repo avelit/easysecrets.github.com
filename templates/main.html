@@ -1,0 +1,32 @@
+<header class="aui-page-header" ng-if="!isGadget">
+    <ng-include src="'templates/header.html'" />
+</header>
+<nav class="aui-navgroup aui-navgroup-horizontal" ng-if="!isGadget">
+    <div class="aui-navgroup-inner">
+        <div class="aui-navgroup-primary">
+            <ul class="aui-nav">
+                <li ng-class="{ 'aui-nav-selected' : menuInfo.isView }">
+                    <a href="#/">View</a>
+                </li>
+                <li ng-class="{ 'aui-nav-selected' : menuInfo.isColumn }">
+                    <a href="#/columns">Columns</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="aui-page-panel">
+  <div class="aui-page-panel-inner">
+    <div class="aui-page-panel-nav" ng-if="!isGadget">
+        <ng-include src="'templates/menu.html'" />
+    </div>
+
+    <section class="aui-page-panel-content" ng-if="showGadgetConfiguration">
+        <ng-include src="'/templates/gadgetConfig.html'"></ng-include>
+    </section>
+
+    <section class="aui-page-panel-content" ng-if="!showGadgetConfiguration">
+        <ng-include src="menuInfo.contentTemplate" onload="resize()"></ng-include>
+    </section>
+  </div>
+</div>

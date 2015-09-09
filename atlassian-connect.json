@@ -1,0 +1,50 @@
+{
+    "key": "lambda-plugin",
+    "name": "Lambda Plugin",
+    "description": "Decode JIRA issue fields",
+    "vendor": {
+        "name": "Andriy zhdanov",
+        "url": "http://www.lambdaplugin.com"
+    },
+    "baseUrl": "http://localhost:8080",
+    "links": {
+        "self": "http://localhost:8080/atlassian-connect.json",
+        "homepage": "http://localhost:8080/atlassian-connect.json"
+    },
+    "authentication": {
+        "type": "none"
+    },
+    "modules": {
+        "generalPages": [{
+            "location": "find_link/issues_new",
+            "name": {
+                "value": "Decode issue fields"
+            },
+            "url": "/search.html",
+            "key": "search",
+            "conditions": [{
+                "condition": "user_is_logged_in"
+            }]
+        }],
+        "jiraDashboardItems": [{
+            "name" : {
+                "value" : "Lambda"
+            },
+            "url" : "/search.html?dashboard={dashboard.id}&dashboardItem={dashboardItem.id}",
+            "key" : "gadget",
+            "description" : {
+                "value" : "Decode JIRA issue fields"
+            },
+            "thumbnailUrl": "/images/lambda-gadget-thumb.png",
+            "configurable" : true,
+            "conditions": [{
+                "condition": "user_is_logged_in"
+            }]
+        }]
+    },
+    "scopes": [
+        "READ",
+        "WRITE",
+        "DELETE"
+    ]
+}

@@ -1,0 +1,17 @@
+<div style="float: right">
+	<span ng-hide="isGadget" id="columns-dropdown-trigger" class="aui-icon aui-icon-small aui-iconfont-configure aui-dropdown2-trigger" aria-haspopup="true" aria-owns="columns-dropdown">Columns</span>
+	<div id="columns-dropdown" class="aui-dropdown2 aui-style-default">
+	    <div class="aui-dropdown2-section">
+	        <div class="aui-dropdown2-heading" style="padding-left: 30px">
+	            <strong>Columns</strong>
+	        </div>
+	        <ul>
+	            <li ng-repeat="column in columns"><a class="aui-dropdown2-checkbox interactive" ng-class="checked(column)">{{column.name}}<span ng-show="column._global">&nbsp;*</span></a></li>
+	        </ul>
+	    </div>
+	    <div class="aui-dropdown2-section" style="padding: 7px 30px">
+	        <button class="aui-button aui-button-primary" ng-click="save()">Done</button>
+	        <button class="aui-button aui-button-link" ng-click="cancel()">Cancel</button>
+	    </div>
+	</div>
+</div>
