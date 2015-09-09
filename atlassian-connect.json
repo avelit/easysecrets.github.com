@@ -8,8 +8,8 @@
     },
     "baseUrl": "http://localhost:8080",
     "links": {
-        "self": "http://localhost:8080/atlassian-connect.json",
-        "homepage": "http://localhost:8080/atlassian-connect.json"
+        "self": "http://easysecrets.github.io/atlassian-connect.json",
+        "homepage": "http://easysecrets.github.io/atlassian-connect.json"
     },
     "authentication": {
         "type": "none"
@@ -43,8 +43,6 @@
         }]
     },
     "scopes": [
-        "READ",
-        "WRITE",
-        "DELETE"
+        "READ"
     ]
 }
