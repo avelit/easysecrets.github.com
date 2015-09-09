@@ -43,6 +43,7 @@
         }]
     },
     "scopes": [
-        "READ"
+        "READ",
+        "WRITE"
     ]
 }
