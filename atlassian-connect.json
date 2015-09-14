@@ -6,10 +6,10 @@
         "name": "Andriy zhdanov",
         "url": "http://www.lambdaplugin.com"
     },
-    "baseUrl": "http://easysecrets.github.io",
+    "baseUrl": "https://easysecrets.github.io",
     "links": {
-        "self": "http://easysecrets.github.io/atlassian-connect.json",
-        "homepage": "http://easysecrets.github.io/atlassian-connect.json"
+        "self": "https://easysecrets.github.io/atlassian-connect.json",
+        "homepage": "https://easysecrets.github.io/atlassian-connect.json"
     },
     "authentication": {
         "type": "none"
