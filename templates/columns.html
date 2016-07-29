@@ -75,6 +75,6 @@
     <div>
         <button class="aui-button submit" ng-click="saveColumn(columnForm)" ng-disabled="!columnForm.$dirty || columnForm.$invalid">Save</button>
         <button class="aui-button aui-button-subtle" ng-click="saveAsNewColumn(columnForm)" ng-disabled="!showSaveAsNewButton">Save As New</button>
-        <button class="aui-button aui-button-subtle dangerous" ng-click="removeColumn(true)" ng-disabled="column._global || !column.id">Delete</button>
+        <button class="aui-button aui-button-subtle dangerous" ng-click="removeColumn(true)" ng-disabled="!column.id || column.id < 4">Delete</button>
     </div>
 </form>
