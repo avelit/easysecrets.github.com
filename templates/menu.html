@@ -1,32 +1,32 @@
-<nav class="aui-navgroup aui-navgroup-vertical">
-    <form class="aui">
-        <div class="aui-navgroup-inner">
-            <ul ng-show="menuInfo.isView" class="aui-nav">
-                <li ng-repeat="view in viewOptions.views" ng-class="view.id == viewOptions.selected ? 'aui-nav-selected' : ''">
-                    <a ng-click="viewSelected(view.id)">{{view.name}}</a>
-                </li>
-            </ul>
+<form class="aui">
+    <div class="ak-field-group" ng-show="menuInfo.isView">
+        <ul class="aui-nav">
+            <li ng-repeat="view in viewOptions.views" ng-class="view.id == viewOptions.selected ? 'aui-nav-selected' : ''">
+                <a ng-click="viewSelected(view.id)">{{view.name}}</a>
+            </li>
+        </ul>
+    </div>
 
-            <ul ng-show="menuInfo.isColumn" class="aui-nav" style="border-top: 0">
-                <li ng-repeat="col in columns" ng-class="col.id == column.id ? 'aui-nav-selected' : ''">
-                    <a ng-click="columnSelected(col.id)">{{col.name}}<span ng-show="col._global">&nbsp;*</span></a>
-                </li>
-                <li><a  ng-click="newColumn()"><span class="aui-icon aui-icon-small aui-iconfont-add">Add column</span></a></li>
-            </ul>
+    <div class="ak-field-group" ng-show="menuInfo.isColumn">
+        <ul class="aui-nav" style="border-top: 0">
+            <li ng-repeat="col in columns" ng-class="col.id == column.id ? 'aui-nav-selected' : ''">
+                <a ng-click="columnSelected(col.id)">{{col.name}}<span ng-show="col._global">&nbsp;*</span></a>
+            </li>
+            <li><a  ng-click="newColumn()"><span class="aui-icon aui-icon-small aui-iconfont-add">Add column</span></a></li>
+        </ul>
+    </div>
 
-            <div class="aui-nav-heading" style="{{menuInfo.isColumn || viewOptions.views.length > 0 ? '' : 'border-top: 0'}}"><strong>{{ 'Filter' | i18n }}</strong></div>
-            <select id="select2-filter" class="select" title="Saved filter"
-                    ng-model="filterOptions.selected"
-                    ng-options="filter.id as filter.name for filter in filterOptions.filters"
-                    ng-change="filterSelected()"
-                    aui-select2>
-            </select>
+    <div class="ak-field-group" style="{{menuInfo.isColumn || viewOptions.views.length > 0 ? '' : 'border-top: 0'}}">
+        <label>{{ 'Filter' | i18n }}</label>
+        <select id="select2-filter" class="select" title="Saved filter"
+                ng-model="filterOptions.selected"
+                ng-options="filter.id as filter.name for filter in filterOptions.filters"
+                ng-change="filterSelected()"
+                aui-select2>
+        </select>
+    </div>
 
-            <div class="aui-nav-heading"><strong>Actions</strong></div>
-            <ul class="aui-nav">
-                <li><a ng-click="refresh()">Refresh</a></li>
-            </ul>
-        </div>
-    </form>
-</nav>
-
+    <div class="ak-field-group">
+        <a ng-click="refresh()">Refresh</a>
+    </div>
+</form>

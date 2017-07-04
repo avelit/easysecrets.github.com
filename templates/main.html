@@ -1,7 +1,7 @@
-<header class="aui-page-header" ng-if="!isGadget">
+<ak-grid-column size="12" ng-if="!isGadget">
     <ng-include src="'templates/header.html'" />
-</header>
-<nav class="aui-navgroup aui-navgroup-horizontal" ng-if="!isGadget">
+</ak-grid-column>
+<ak-grid-column size="12" class="aui-navgroup aui-navgroup-horizontal" ng-if="!isGadget">
     <div class="aui-navgroup-inner">
         <div class="aui-navgroup-primary">
             <ul class="aui-nav">
@@ -14,19 +14,15 @@
             </ul>
         </div>
     </div>
-</nav>
-<div class="aui-page-panel">
-  <div class="aui-page-panel-inner">
-    <div class="aui-page-panel-nav" ng-if="!isGadget">
-        <ng-include src="'templates/menu.html'" />
-    </div>
+</ak-grid-column>
+<ak-grid-column size="2" ng-if="!isGadget">
+    <ng-include src="'templates/menu.html'" />
+</ak-grid-column>
 
-    <section class="aui-page-panel-content" ng-if="showGadgetConfiguration">
-        <ng-include src="'/templates/gadgetConfig.html'"></ng-include>
-    </section>
+<ak-grid-column size="12" ng-if="showGadgetConfiguration">
+    <ng-include src="'/templates/gadgetConfig.html'"></ng-include>
+</ak-grid-column>
 
-    <section class="aui-page-panel-content" ng-if="!showGadgetConfiguration">
-        <ng-include src="menuInfo.contentTemplate" onload="resize()"></ng-include>
-    </section>
-  </div>
-</div>
+<ak-grid-column size="10" ng-if="!showGadgetConfiguration">
+    <ng-include src="menuInfo.contentTemplate" onload="resize()"></ng-include>
+</ak-grid-column>
