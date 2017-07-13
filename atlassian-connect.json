@@ -2,6 +2,7 @@
     "key": "lambda-plugin",
     "name": "Lambda Plugin",
     "description": "Decode JIRA issue fields",
+    "enableLicensing": true,
     "vendor": {
         "name": "Andriy zhdanov",
         "url": "http://www.lambdaplugin.com"
@@ -20,17 +21,30 @@
             "name": {
                 "value": "Decode issue fields"
             },
-            "url": "/search.html",
+            "url": "/search.html?project.key={project.key}&v=1",
             "key": "search",
             "conditions": [{
                 "condition": "user_is_logged_in"
             }]
         }],
+        "jiraReports": [{
+            "url": "search.html?project.key={project.key}&v=1",
+            "weight": 100,
+            "description": {
+              "value": "View issue search results with custom expression columns"
+            },
+            "reportCategory": "other",
+            "thumbnailUrl": "/images/lambda-search-thumb.png",
+            "key": "search-report",
+            "name": {
+              "value": "Decode issue fields"
+            }
+         }],
         "jiraDashboardItems": [{
             "name" : {
                 "value" : "Lambda"
             },
-            "url" : "/search.html?dashboard={dashboard.id}&dashboardItem={dashboardItem.id}",
+            "url" : "/search.html?dashboard={dashboard.id}&dashboardItem={dashboardItem.id}&v=1",
             "key" : "gadget",
             "description" : {
                 "value" : "Decode JIRA issue fields"
