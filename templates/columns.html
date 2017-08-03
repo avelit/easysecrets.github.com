@@ -48,19 +48,18 @@
         <div class="aui-item"> <!-- PREVIEW -->
             <div class="field-group">
                 <label for="select2-issue">Sample Issue</label>
-                <select name="select2-issue" class="select"
-                        title="Sample issue"
-                        ng-model="issueOptions.selected"
-                        ng-options="issue.id as (issue.key + ' ' + issue.fields.summary) for issue in issueOptions.issues"
-                        ng-change="issueSelected()"
-                        aui-select2>
-                </select>
+                <input type="text" class="text long-field"
+                      title="Sample issue"
+                      id="select2-issue"
+                      ng-model="selectedIssueKey"
+                      ng-change="issueSelected(selectedIssueKey)"
+                      aui-issue-picker>
                 <div class="description">Select issue to see column in action.</div>
             </div>
             <div class="field-group">
                 <label for="issueJson">JSON</label>
                     <pre class="textarea long-field json" highlight
-                         name="issueJson" ng-bind="preview.issueJson">/pre>
+                         name="issueJson" ng-bind="preview.issueJson"></pre>
                     <div class="description">Issue object.&nbsp;<span class="aui-icon icon-inline-help" ng-click="showJsonHelp = !showJsonHelp"><span>Help</span></span></div>
                     <span class="field-help" ng-show="showJsonHelp">See <a href="http://www.lambdaplugin.com/wiki/Examples.html">documentation</a> for more details.</span>
             </div>
