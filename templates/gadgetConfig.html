@@ -1,4 +1,4 @@
-<div id="config" ng-controller="GadgetController">
+<div id="config" ng-controller="GadgetController" resize>
     <form class="aui">
         <div class="field-group">
             <label>View</label>
@@ -11,6 +11,7 @@
             <div class="description">You can configure views <a ng-href="{{hostBaseUrl}}/plugins/servlet/ac/lambda-plugin/search" target="_parent">here</a>.</div>
         </div>
         <div class="field-group">
+            <label>Filter</label>
             <select id="select2-filter" class="select" title="Saved filter"
                     ng-model="filterOptions.selected"
                     ng-options="filter.id as filter.name for filter in filterOptions.filters"

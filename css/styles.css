@@ -125,6 +125,10 @@ header, .aui-page-panel-inner, .aui-navgroup-inner {
 .is-not-gadget .aui-page-panel-content {
   padding-right: 20px;
 }
+.is-not-gadget {
+  padding-left: 20px;
+  padding-right: 20px;
+}
 .is-gadget .aui-page-panel-content {
   padding: 0;
 }
@@ -319,6 +323,9 @@ table {
 .aui-button.aui-button-link:hover,
 .aui-button.aui-button-link:visited:hover {
     color: #0065FF;
+}
+.is-gadget ak-grid-column {
+    margin-left: 4px;
 }
 
 /* Primary Colors */

@@ -10,12 +10,16 @@
         </div>
     </div>
     <div class="pagingtable">
+        <div ng-if="isGadget">
+            <span>Displaying {{currentFilterName ? currentFilterName : 'All'}} issues</span>
+            <a ng-href="{{hostBaseUrl}}/plugins/servlet/ac/lambda-plugin/search#!/?{{reportParams}}" class="fa fa-external-link-square" target="_parent" 
+            title="Open report page to modify this view"></a>
+        </div>
         <table id="issuetable" class="aui" cellspacing="0" cellpadding="3" border="0" width="100%">
             <thead>
                 <tr id="dragArea" as-sortable="dragDropOptions" ng-model="columns">
                     <th colspan="4">
-                      Issue
-                      <columns-dropdown is-gadget="isGadget" columns="allColumns" selected="currentView.columns" on-close="updateColumns()"/>
+                      Issue <columns-dropdown is-gadget="isGadget" columns="allColumns" selected="currentView.columns" on-close="updateColumns()"/>
                     </th>
                     <th ng-if="!isGadget" ng-repeat="column in columns" as-sortable-item ng-model="fake" nowrap>
                         <div as-sortable-item-handle class="sortable-handle">{{column.name}}</div>
