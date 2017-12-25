@@ -80,7 +80,13 @@
           app.filter(filter.name, new Function(filter.code));
           // TODO: availableFilters.push(filter.name);
         });
-        angular.bootstrap(document, ['searchApp']);
+        AP.getLocation(function (parentLocation) {
+          var parts = parentLocation.split('#!'); // AP.history state
+          if (parts.length > 1) {
+              location.hash = '#!' + parts[1];
+          }
+          angular.bootstrap(document, ['searchApp']);
+        });
       });
     })();
   </script>
