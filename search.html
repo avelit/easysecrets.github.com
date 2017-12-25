@@ -61,7 +61,8 @@
       }();
       window.i18nDefault = '/i18n/default.json?_=' + b;
       var v = getUrlParam('v');
-      $.getScript(baseUrl + '/atlassian-connect/all.js', function() {
+      var connectjs = baseUrl ? baseUrl + '/atlassian-connect/all.js' : '/js/testdata.js';
+      $.getScript(connectjs, function() {
   	    $('#content').html("<context items='{\"isGadget\":" + isGadget +
            ", \"dashboardId\":\"" + dashboard + "\"" +
            ", \"dashboardItemId\":\"" + dashboardItem + "\"" +
