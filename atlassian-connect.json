@@ -56,6 +56,9 @@
             }]
         }]
     },
+    "apiMirgations": {
+        "gdpr": true
+    },
     "scopes": [
         "READ",
         "WRITE"
