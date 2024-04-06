@@ -5,12 +5,12 @@
     "enableLicensing": true,
     "vendor": {
         "name": "Andriy Zhdanov",
-        "url": "https://app.lambdaplugin.eu"
+        "url": "https://lambda.easy-secrets.com"
     },
-    "baseUrl": "https://app.lambdaplugin.eu",
+    "baseUrl": "https://lambda.easy-secrets.com",
     "links": {
-        "self": "https://app.lambdaplugin.eu/atlassian-connect.json",
-        "homepage": "https://app.lambdaplugin.eu/atlassian-connect.json"
+        "self": "https://lambda.easy-secrets.com/atlassian-connect.json",
+        "homepage": "https://lambda.easy-secrets.com/atlassian-connect.json"
     },
     "authentication": {
         "type": "none"
