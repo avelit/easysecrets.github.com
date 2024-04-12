@@ -1,23 +1,23 @@
 {
     "key": "lambda-plugin",
-    "name": "Lambda Plugin",
-    "description": "Decode JIRA issue fields",
+    "name": "Decode issue fields (Lambda App)",
+    "description": "Decode issue fields",
     "enableLicensing": true,
     "vendor": {
         "name": "Andriy Zhdanov",
-        "url": "https://lambda.easy-secrets.com"
+        "url": "https://app.lambdaplugin.eu"
     },
-    "baseUrl": "https://lambda.easy-secrets.com",
+    "baseUrl": "https://easysecrets.github.io",
     "links": {
-        "self": "https://lambda.easy-secrets.com/atlassian-connect.json",
-        "homepage": "https://lambda.easy-secrets.com/atlassian-connect.json"
+        "self": "https://easysecrets.github.io/atlassian-connect.json",
+        "homepage": "https://easysecrets.github.io/atlassian-connect.json"
     },
     "authentication": {
         "type": "none"
     },
     "modules": {
         "generalPages": [{
-            "location": "find_link/issues_new",
+            "location": "system.top.navigation.bar",
             "name": {
                 "value": "Decode issue fields"
             },
@@ -42,12 +42,12 @@
          }],
         "jiraDashboardItems": [{
             "name" : {
-                "value" : "Lambda"
+                "value" : "Decode issue fields (Lambda)"
             },
             "url" : "/search.html?dashboard={dashboard.id}&dashboardItem={dashboardItem.id}&v=1",
             "key" : "gadget",
             "description" : {
-                "value" : "Decode JIRA issue fields"
+                "value" : "View issue search results with custom expression columns"
             },
             "thumbnailUrl": "/images/lambda-gadget-thumb.png",
             "configurable" : true,
