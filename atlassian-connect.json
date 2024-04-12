@@ -1,6 +1,6 @@
 {
     "key": "lambda-plugin",
-    "name": "Decode issue fields (Lambda App)",
+    "name": "Expression Columns for Jira (Lambda App)",
     "description": "Decode issue fields",
     "enableLicensing": true,
     "vendor": {
@@ -19,7 +19,7 @@
         "generalPages": [{
             "location": "system.top.navigation.bar",
             "name": {
-                "value": "Decode issue fields"
+                "value": "Expression Columns for Jira"
             },
             "url": "/search.html?project.key={project.key}&v=1",
             "key": "search",
@@ -37,12 +37,12 @@
             "thumbnailUrl": "/images/lambda-search-thumb.png",
             "key": "search-report",
             "name": {
-              "value": "Decode issue fields"
+              "value": "Expression Columns for Jira"
             }
          }],
         "jiraDashboardItems": [{
             "name" : {
-                "value" : "Decode issue fields (Lambda)"
+                "value" : "Expression Columns for Jira (Lambda App)"
             },
             "url" : "/search.html?dashboard={dashboard.id}&dashboardItem={dashboardItem.id}&v=1",
             "key" : "gadget",
